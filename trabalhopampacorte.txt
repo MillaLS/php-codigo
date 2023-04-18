@@ -1,0 +1,130 @@
+index.php
+
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edit this template
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Pampa Corte</title>
+    </head>
+    <body>
+        
+        <form method="post" action="detalhesusuario.php">
+            <table>
+                <tr>
+                    <td>Nome </td>
+                    <td>
+                        <input type="text" name="nome" placeholder="Informe seu nome completo">
+                    </td>
+                </tr>
+                <tr>
+                    <td>E-mail </td>
+                    <td>
+                        <input type="text" name="email" placeholder="Informe seu email">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Telefone </td>
+                    <td>
+                        <input type="text" name="telefone" placeholder="Informe seu telefone">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Atuação </td>
+                    <td>
+                        <textarea name = "atuacao" placeholder="Informe sua área de atuação" maxlength="60"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Selecione um tipo de acesso</td>
+                    <td>
+                        <input type="radio" name="acesso" value="administrador"> Administrador
+                        <br>
+                        <input type="radio" name="acesso" value="estudante"> Estudante
+                        <br>
+                        <input type="radio" name="acesso" value="produtor"> Produtor
+                        <br>
+                        <input type="radio" name="acesso" value="professor"> Professor
+                        <br>
+                        <input type="radio" name="acesso" value="tecnico"> Técnico
+                        <br>
+                        <input type="radio" name="acesso" value="visitante"> Visitante
+                        <br>
+                    </td>
+                </tr> 
+                <tr>
+                    <td>Estado </td>
+                    <td>
+                        <select name="estado">
+                            <option value="rs">RS</option>
+                            <option value="sc">SC</option>
+                            <option value="pr">PR</option>
+                        </select>      
+                    </td>
+                </tr>
+                <tr>
+                    <td>Cidade </td>
+                    <td>
+                        <select name="cidade">
+                            <option value="portoalegre">Porto Alegre</option>
+                            <option value="florianopolis">Florianópolis</option>
+                            <option value="curitiba">Curitiba</option>
+                        </select>  
+                    </td>
+                </tr>
+                <td><td>
+                    <button type="submit" value="acesso">Solicitar acesso</button>
+                </td></td>
+            </table>
+        </form>
+        
+        <?php
+
+        ?>
+    </body>
+</html>
+
+detalhesusuario.php
+
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Detalhes do usuário</title>
+    </head>
+    <body>
+        <?php
+    if($_POST) {
+                @$nome = $_POST['nome'];
+                @$email = $_POST['email'];
+                @$telefone = $_POST['telefone'];
+                @$atuacao = $_POST['atuacao'];
+                @$acesso = $_POST['acesso'];
+                @$estado = $_POST['estado'];
+                @$cidade = $_POST['cidade'];
+                
+                if (empty($nome)|| empty($email)
+                        || empty($telefone) || empty($atuacao) 
+                        || empty($acesso) || empty($estado) || empty($cidade)) {
+                    echo('<div class="alert"> Todos os campos são obrigatórios. </div>');
+                }else{
+                    $result = "Nome: ".$nome. 
+                            "<br>E-mail: ".$email.
+                            "<br>Telefone: ".$telefone. 
+                            "<br>Atuação: ".$atuacao.
+                            "<br>Acesso: ".$acesso.
+                            "<br>Estado: ".$estado;
+                            "<br>Cidade: ".$cidade;
+                    echo($result); 
+    }
+ }
+        ?>
+    </body>
+</html>
